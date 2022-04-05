@@ -5,6 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.exo.calcule.Calcule;
 import com.exo.entities.Admin;
 import com.exo.entities.Evaluation;
 import com.exo.entities.Participant;
@@ -29,6 +30,8 @@ public class ProjetFinaleApplication implements CommandLineRunner {
 	ParticipantService participantService;
 	@Autowired
 	EvaluationService evaluationService;
+	
+	
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetFinaleApplication.class, args);
@@ -48,7 +51,6 @@ public class ProjetFinaleApplication implements CommandLineRunner {
 //		recommandationService.addrecommandation(new Recommandation("titre1", "texte1", "date1"));
 //		participantService.addparticipent(new Participant("nom1", "prenom1", "email1@gamil.com", "tel1", 20, null));
 //		evaluationService.addevaluation(new Evaluation("titre1", 3, "remarque1", "nom1"));
-		
 	}
 
 }

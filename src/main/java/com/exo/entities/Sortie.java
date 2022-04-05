@@ -15,6 +15,7 @@ import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Sortie {
@@ -29,6 +30,8 @@ public class Sortie {
 	private String depart;
 	@NotBlank
 	private String retour;
+	@NotNull
+	private double prix;
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="responsable",referencedColumnName = "nomComplet",unique = true)
 	private Admin admin;
@@ -101,16 +104,28 @@ public class Sortie {
 	public void setParticipants(List<Participant> participants) {
 		this.participants = participants;
 	}
+	
 
+	public double getPrix() {
+		return prix;
+	}
+
+	public void setPrix(double prix) {
+		this.prix = prix;
+	}
+
+	
 	public Sortie(String titre, @NotBlank String destination, @NotBlank String depart, @NotBlank String retour,
-			Admin admin, String description) {
+			@NotNull double prix, Admin admin, String description, List<Participant> participants) {
 		super();
 		this.titre = titre;
 		this.destination = destination;
 		this.depart = depart;
 		this.retour = retour;
+		this.prix = prix;
 		this.admin = admin;
 		this.description = description;
+		this.participants = participants;
 	}
 
 	public Sortie() {

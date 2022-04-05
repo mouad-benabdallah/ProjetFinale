@@ -44,7 +44,7 @@ public class ProjetFinaleApplication implements CommandLineRunner {
 //		api.saveRole(new Role("organisateur"));
 //		api.addRoleToAdmin("admin2", "user");
 //		api.addRoleToAdmin("admin1", "admin");
-//		sortieService.addsortie(new Sortie("titre1", "destination1", "depart1", "retour1", null, "description1"));
+//		sortieService.addsortie(new Sortie("titre1", "destination1", "depart1", "retour1","50", null, "description1"));
 //		recommandationService.addrecommandation(new Recommandation("titre1", "texte1", "date1"));
 //		participantService.addparticipent(new Participant("nom1", "prenom1", "email1@gamil.com", "tel1", 20, null));
 //		evaluationService.addevaluation(new Evaluation("titre1", 3, "remarque1", "nom1"));

@@ -1,7 +1,7 @@
 package com.exo.service;
 
 
-import java.util.List;
+
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -14,6 +14,6 @@ public interface EvaluationInterface {
 	public Evaluation addevaluation(Evaluation evaluation);
 	public void deletebyid(int id);
 	public Optional<Evaluation> findById(int id);
-	public List<Evaluation> findAllByOrderByNoteDesc();
+	public Page<Evaluation> findAllByOrderByNoteDesc(Pageable pageable);
 
 }

@@ -1,5 +1,6 @@
 package com.exo.web;
 
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,8 @@ public class EvaluationController {
 	EvaluationService evaluationService;
 	
 	@GetMapping("")
-	public Page<Evaluation> readevaluation(Pageable pageable){
-		return evaluationService.findAll(pageable);
+	public Page<Evaluation> trinotdesc(Pageable pageable){
+		return evaluationService.findAllByOrderByNoteDesc(pageable);
 	}
 	@PostMapping
 	public void addevaluation(@RequestBody @Valid Evaluation e) {
@@ -34,5 +35,10 @@ public class EvaluationController {
 	public void deletebyid(@PathVariable int id) {
 		evaluationService.deletebyid(id);
 	}
+	@GetMapping("/findall")
+	public Page<Evaluation> findall(Pageable pageable){
+		return evaluationService.findAll(pageable);
+	}
+	
 
 }

@@ -1,5 +1,7 @@
 package com.exo.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +62,12 @@ public class AccountService implements AccountInterface{
 	public Admin findByNomComplet(String nomComplet) {
 		// TODO Auto-generated method stub
 		return adminRepository.findByNomComplet(nomComplet);
+	}
+
+	@Override
+	public List<Admin> admins() {
+		// TODO Auto-generated method stub
+		return adminRepository.findAll();
 	}
 
 }

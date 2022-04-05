@@ -81,14 +81,6 @@ public class Admin implements Serializable {
 		this.telephone = telephone;
 	}
 
-//	public Sortie getSortie() {
-//		return sortie;
-//	}
-//
-//	public void setSortie(Sortie sortie) {
-//		this.sortie = sortie;
-//	}
-
 	public Collection<Role> getRoles() {
 		return roles;
 	}
@@ -101,9 +93,10 @@ public class Admin implements Serializable {
 		return serialVersionUID;
 	}
 
-	public Admin(int active, @NotBlank String password, @Size(min = 4, max = 50) String nomComplet, String adresse,
-			String telephone,  Collection<Role> roles) {
+	public Admin(String login, int active, @NotBlank String password, @Size(min = 4, max = 50) String nomComplet,
+			String adresse, String telephone, Collection<Role> roles) {
 		super();
+		this.login = login;
 		this.active = active;
 		this.password = password;
 		this.nomComplet = nomComplet;
@@ -115,7 +108,9 @@ public class Admin implements Serializable {
 	public Admin() {
 		super();
 	}
+	
 
+	
 	
 	
 	

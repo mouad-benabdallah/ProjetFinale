@@ -14,7 +14,7 @@ import com.exo.entities.Recommandation;
 import com.exo.service.RecommandationService;
 
 @RestController
-@RequestMapping("recommendation")
+@RequestMapping("recommandation")
 public class RecommandationController {
 	@Autowired
 	RecommandationService recommandationService;

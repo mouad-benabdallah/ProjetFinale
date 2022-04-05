@@ -1,5 +1,7 @@
 package com.exo.web;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +36,18 @@ public class ParticipantController {
 	public void deletebyid(@PathVariable int id) {
 		participantService.deletebyid(id);
 	}
+	@GetMapping("searchAnd/{nom}/{prenom}")
+	public List<Participant> findbynomandprenom(@PathVariable String nom,@PathVariable String prenom){
+		return participantService.findByNomAndPrenom(nom, prenom);
+	}
+	@GetMapping("searchOr/{nom}/{prenom}")
+	public List<Participant> findbynomorprenom(@PathVariable String nom,@PathVariable String prenom){
+		return participantService.findByNomOrPrenom(nom, prenom);
+	}
+	@GetMapping("searchEmail/{email}")
+	public Participant findbyemail(@PathVariable String email){
+		return participantService.findByEmail(email);
+	}
+	
 
 }

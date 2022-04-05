@@ -1,7 +1,7 @@
 package com.exo.service;
 
 
-import java.util.List;
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,9 +42,9 @@ public class EvaluationService implements EvaluationInterface{
 	}
 
 	@Override
-	public List<Evaluation> findAllByOrderByNoteDesc() {
+	public Page<Evaluation> findAllByOrderByNoteDesc(Pageable pageable) {
 		// TODO Auto-generated method stub
-		return evaluationRepository.findAllByOrderByNoteDesc();
+		return evaluationRepository.findAllByOrderByNoteDesc(pageable);
 	}
 
 }

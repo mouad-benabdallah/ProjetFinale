@@ -4,6 +4,7 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -43,8 +44,18 @@ public class Security extends WebSecurityConfigurerAdapter {
 	http.authorizeRequests().antMatchers("/register/**").permitAll();
 //
 //	
-//	http.authorizeRequests().antMatchers(HttpMethod.POST,"/api/produit").hasRole("admin");
-//	http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/api/produit").hasRole("admin");
+	http.authorizeRequests().antMatchers(HttpMethod.POST,"/sortie/**").hasRole("guide");
+	http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/sortie/**").hasRole("guide");
+	http.authorizeRequests().antMatchers(HttpMethod.POST,"/recommandation/**").hasRole("guide");
+	http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/recommandation/**").hasRole("guide");
+	http.authorizeRequests().antMatchers(HttpMethod.POST,"/sortie/**").hasRole("organisateur");
+	http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/sortie/**").hasRole("organisateur");
+	http.authorizeRequests().antMatchers(HttpMethod.POST,"/recommandation/**").hasRole("organisateur");
+	http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/recommandation/**").hasRole("organisateur");
+	http.authorizeRequests().antMatchers(HttpMethod.POST,"/participant/**").hasRole("organisateur");
+	http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/participant/**").hasRole("organisateur");
+	http.authorizeRequests().antMatchers(HttpMethod.POST,"/evaluation/**").hasRole("organisateur");
+	http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/evaluation/**").hasRole("organisateur");
 	http.authorizeRequests().anyRequest().authenticated();
 //	
 	}

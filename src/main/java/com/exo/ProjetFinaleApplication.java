@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 import com.exo.calcule.Calcule;
 import com.exo.entities.Admin;
@@ -30,6 +31,8 @@ public class ProjetFinaleApplication implements CommandLineRunner {
 	ParticipantService participantService;
 	@Autowired
 	EvaluationService evaluationService;
+	@Autowired
+	Calcule calcule;
 	
 	
 
@@ -51,6 +54,10 @@ public class ProjetFinaleApplication implements CommandLineRunner {
 //		recommandationService.addrecommandation(new Recommandation("titre1", "texte1", "date1"));
 //		participantService.addparticipent(new Participant("nom1", "prenom1", "email1@gamil.com", "tel1", 20, null));
 //		evaluationService.addevaluation(new Evaluation("titre1", 3, "remarque1", "nom1"));
+		
+		System.out.println("la moyenne des prix des sorties est: "+ calcule.moyenneprix());
+		System.out.println("la moyenne des evaluation est: "+calcule.moyenneevaluation());
+		System.out.println("le nombre des participants est: "+calcule.nombredesparticipant());
 	}
 
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -17,20 +17,22 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+
+
 @Entity
 public class Sortie {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(nullable = false)
+	@NotBlank(message = "le titre ne doit pas être vide")
 	private String titre;
-	@NotBlank
+	@NotBlank(message = "la destination ne doit pas être vide")
 	private String destination;
-	@NotBlank
+	@NotBlank(message = "le depart ne doit pas être vide")
 	private String depart;
-	@NotBlank
+	@NotBlank(message = "le retour ne doit pas être vide")
 	private String retour;
-	@NotNull
+	@NotNull(message = "le prix ne doit pas être vide")
 	private double prix;
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="responsable",referencedColumnName = "nomComplet",unique = true)
@@ -115,8 +117,18 @@ public class Sortie {
 	}
 
 	
-	public Sortie(String titre, @NotBlank String destination, @NotBlank String depart, @NotBlank String retour,
-			@NotNull double prix, Admin admin, String description, List<Participant> participants) {
+	
+
+	
+
+	
+
+	public Sortie(@NotBlank(message = "le titre ne doit pas être vide") String titre,
+			@NotBlank(message = "la destination ne doit pas être vide") String destination,
+			@NotBlank(message = "le depart ne doit pas être vide") String depart,
+			@NotBlank(message = "le retour ne doit pas être vide") String retour,
+			@NotNull(message = "le prix ne doit pas être vide") double prix, Admin admin, String description,
+			List<Participant> participants) {
 		super();
 		this.titre = titre;
 		this.destination = destination;

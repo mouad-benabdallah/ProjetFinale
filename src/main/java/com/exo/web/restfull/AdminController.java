@@ -1,4 +1,4 @@
-package com.exo.web;
+package com.exo.web.restfull;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import com.exo.entities.Admin;
 import com.exo.service.AccountService;
 
 @RestController
-@RequestMapping("api")
+@RequestMapping("api/admins")
 public class AdminController {
 	@Autowired
 	AccountService accountService;

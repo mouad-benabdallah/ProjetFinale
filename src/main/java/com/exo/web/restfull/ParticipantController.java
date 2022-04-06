@@ -1,4 +1,4 @@
-package com.exo.web;
+package com.exo.web.restfull;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ import com.exo.entities.Participant;
 import com.exo.service.ParticipantService;
 
 @RestController
-@RequestMapping("participant")
+@RequestMapping("api/participant")
 public class ParticipantController {
 	@Autowired
 	ParticipantService participantService;

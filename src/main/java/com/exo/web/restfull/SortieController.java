@@ -1,4 +1,4 @@
-package com.exo.web;
+package com.exo.web.restfull;
 
 
 
@@ -21,7 +21,7 @@ import com.exo.entities.Sortie;
 import com.exo.service.SortieService;
 
 @RestController
-@RequestMapping("sortie")
+@RequestMapping("api/sortie")
 public class SortieController {
 	@Autowired
 	SortieService sortieService;

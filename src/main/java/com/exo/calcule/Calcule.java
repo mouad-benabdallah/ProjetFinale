@@ -3,7 +3,6 @@ package com.exo.calcule;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import com.exo.entities.Evaluation;
 import com.exo.entities.Participant;
@@ -12,7 +11,7 @@ import com.exo.repository.EvaluationRepository;
 import com.exo.repository.ParticipantRepository;
 import com.exo.repository.SortieRepository;
 
-@Service
+
 public class Calcule {
 	@Autowired
 	SortieRepository sortieRepository;

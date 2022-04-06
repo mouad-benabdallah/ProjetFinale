@@ -1,4 +1,4 @@
-package com.exo.web;
+package com.exo.web.restfull;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,7 +14,7 @@ import com.exo.entities.Recommandation;
 import com.exo.service.RecommandationService;
 
 @RestController
-@RequestMapping("recommandation")
+@RequestMapping("api/recommandation")
 public class RecommandationController {
 	@Autowired
 	RecommandationService recommandationService;

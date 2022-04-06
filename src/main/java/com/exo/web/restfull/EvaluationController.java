@@ -1,4 +1,4 @@
-package com.exo.web;
+package com.exo.web.restfull;
 
 
 import javax.validation.Valid;
@@ -18,7 +18,7 @@ import com.exo.entities.Evaluation;
 import com.exo.service.EvaluationService;
 
 @RestController
-@RequestMapping("evaluation")
+@RequestMapping("api/evaluation")
 public class EvaluationController {
 	@Autowired
 	EvaluationService evaluationService;

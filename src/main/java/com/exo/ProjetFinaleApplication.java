@@ -31,8 +31,8 @@ public class ProjetFinaleApplication implements CommandLineRunner {
 	ParticipantService participantService;
 	@Autowired
 	EvaluationService evaluationService;
-	@Autowired
-	Calcule calcule;
+//	@Autowired
+//	Calcule calcule = new Calcule();
 	
 	
 
@@ -55,9 +55,9 @@ public class ProjetFinaleApplication implements CommandLineRunner {
 //		participantService.addparticipent(new Participant("nom1", "prenom1", "email1@gamil.com", "tel1", 20, null));
 //		evaluationService.addevaluation(new Evaluation("titre1", 3, "remarque1", "nom1"));
 		
-		System.out.println("la moyenne des prix des sorties est: "+ calcule.moyenneprix());
-		System.out.println("la moyenne des evaluation est: "+calcule.moyenneevaluation());
-		System.out.println("le nombre des participants est: "+calcule.nombredesparticipant());
+//		System.out.println("la moyenne des prix des sorties est: "+ calcule.moyenneprix());
+//		System.out.println("la moyenne des evaluation est: "+calcule.moyenneevaluation());
+//		System.out.println("le nombre des participants est: "+calcule.nombredesparticipant());
 	}
 
 }

@@ -2,20 +2,24 @@ package com.exo.service;
 
 
 import java.util.List;
-import java.util.Optional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.exo.entities.Admin;
 import com.exo.entities.Sortie;
+import com.exo.repository.AdminRepository;
 import com.exo.repository.SortieRepository;
 
 @Service
 public class SortieService implements SortieInterface {
 	@Autowired
 	SortieRepository sortieRepository;
+	@Autowired
+	AdminRepository adminRepository;
 
 	@Override
 	public Page<Sortie> readall(Pageable pageable) {
@@ -36,7 +40,7 @@ public class SortieService implements SortieInterface {
 	}
 
 	@Override
-	public Optional<Sortie> findById(int id) {
+	public Sortie findById(int id) {
 		// TODO Auto-generated method stub
 		return sortieRepository.findById(id);
 	}
@@ -69,6 +73,17 @@ public class SortieService implements SortieInterface {
 	public Sortie findByAdmin(String responsable) {
 		// TODO Auto-generated method stub
 		return sortieRepository.findByAdmin(responsable);
+	}
+
+	@Override
+	public void addAdminToSortie(String admin, int id) {
+		// TODO Auto-generated method stub
+		Admin a= adminRepository.findByNomComplet(admin);
+		Sortie s= sortieRepository.findById(id);
+		s.setAdmin(a);
+		
+		
+		
 	}
 	
 

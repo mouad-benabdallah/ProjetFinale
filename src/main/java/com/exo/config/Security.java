@@ -44,18 +44,18 @@ public class Security extends WebSecurityConfigurerAdapter {
 	http.authorizeRequests().antMatchers("/register/**").permitAll();
 //
 //	
-	http.authorizeRequests().antMatchers(HttpMethod.POST,"/sortie/**").hasRole("guide");
-	http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/sortie/**").hasRole("guide");
-	http.authorizeRequests().antMatchers(HttpMethod.POST,"/recommandation/**").hasRole("guide");
-	http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/recommandation/**").hasRole("guide");
-	http.authorizeRequests().antMatchers(HttpMethod.POST,"/sortie/**").hasRole("organisateur");
-	http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/sortie/**").hasRole("organisateur");
-	http.authorizeRequests().antMatchers(HttpMethod.POST,"/recommandation/**").hasRole("organisateur");
-	http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/recommandation/**").hasRole("organisateur");
-	http.authorizeRequests().antMatchers(HttpMethod.POST,"/participant/**").hasRole("organisateur");
-	http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/participant/**").hasRole("organisateur");
-	http.authorizeRequests().antMatchers(HttpMethod.POST,"/evaluation/**").hasRole("organisateur");
-	http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/evaluation/**").hasRole("organisateur");
+	http.authorizeRequests().antMatchers(HttpMethod.POST,"api/sortie/**").hasRole("guide");
+	http.authorizeRequests().antMatchers(HttpMethod.DELETE,"api/sortie/**").hasRole("guide");
+	http.authorizeRequests().antMatchers(HttpMethod.POST,"api/recommandation/**").hasRole("guide");
+	http.authorizeRequests().antMatchers(HttpMethod.DELETE,"api/recommandation/**").hasRole("guide");
+	http.authorizeRequests().antMatchers(HttpMethod.POST,"api/sortie/**").hasRole("organisateur");
+	http.authorizeRequests().antMatchers(HttpMethod.DELETE,"api/sortie/**").hasRole("organisateur");
+	http.authorizeRequests().antMatchers(HttpMethod.POST,"api/recommandation/**").hasRole("organisateur");
+	http.authorizeRequests().antMatchers(HttpMethod.DELETE,"api/recommandation/**").hasRole("organisateur");
+	http.authorizeRequests().antMatchers(HttpMethod.POST,"api/participant/**").hasRole("organisateur");
+	http.authorizeRequests().antMatchers(HttpMethod.DELETE,"api/participant/**").hasRole("organisateur");
+	http.authorizeRequests().antMatchers(HttpMethod.POST,"api/evaluation/**").hasRole("organisateur");
+	http.authorizeRequests().antMatchers(HttpMethod.DELETE,"api/evaluation/**").hasRole("organisateur");
 	http.authorizeRequests().anyRequest().authenticated();
 //	
 	}

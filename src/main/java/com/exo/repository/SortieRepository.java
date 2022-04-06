@@ -13,5 +13,6 @@ public interface SortieRepository extends JpaRepository<Sortie, Integer> {
 	public List<Sortie> findByDepart(String depart);
 	public List<Sortie> findByRetour(String retour);
 	public Sortie findByAdmin(String responsable);
+	public Sortie findById(int id);
 
 }

@@ -20,6 +20,6 @@ public interface SortieInterface {
 	public List<Sortie> findByDepart(String depart);
 	public List<Sortie> findByRetour(String retour);
 	public Sortie findByAdmin(String responsable);
-	public void addAdminToSortie(String admin,int id);
+	public void addAdminToSortie(String nom,Sortie sortie);
 
 }

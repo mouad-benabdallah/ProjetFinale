@@ -19,7 +19,9 @@ public class Admin implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
+	@NotBlank
 	private String login;
+	@Column(columnDefinition = "integer default 1")
 	private int active;
 	@NotBlank
 	private String password;
@@ -93,7 +95,7 @@ public class Admin implements Serializable {
 		return serialVersionUID;
 	}
 
-	public Admin(String login, int active, @NotBlank String password, @Size(min = 4, max = 50) String nomComplet,
+	public Admin(@NotBlank String login, int active, @NotBlank String password, @Size(min = 4, max = 50) String nomComplet,
 			String adresse, String telephone, Collection<Role> roles) {
 		super();
 		this.login = login;

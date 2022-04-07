@@ -76,15 +76,14 @@ public class SortieService implements SortieInterface {
 	}
 
 	@Override
-	public void addAdminToSortie(String admin, int id) {
+	public void addAdminToSortie(String nom, Sortie sortie) {
 		// TODO Auto-generated method stub
-		Admin a= adminRepository.findByNomComplet(admin);
-		Sortie s= sortieRepository.findById(id);
-		s.setAdmin(a);
-		
-		
-		
+		Admin ad = adminRepository.findByNomComplet(nom);
+		sortie.setAdmin(ad);
+		sortieRepository.save(sortie);
 	}
+
+	
 	
 
 }

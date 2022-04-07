@@ -33,15 +33,17 @@ public class Security extends WebSecurityConfigurerAdapter {
 	}
 	
 	@Override
-	protected void configure(HttpSecurity http) throws Exception
+	protected void configure(final HttpSecurity http) throws Exception
 	{
-		http.formLogin();
+		http.formLogin().defaultSuccessUrl("/projetfinal");
 		http.csrf().disable();
+		
 //	http.authorizeRequests().antMatchers().permitAll();	
 //	http.csrf().disable().authorizeRequests().and().httpBasic();
 ////
+	http.authorizeRequests().antMatchers("/**").permitAll();
 	http.authorizeRequests().antMatchers("/login/**").permitAll();
-	http.authorizeRequests().antMatchers("/register/**").permitAll();
+	http.authorizeRequests().antMatchers("/admin/**").permitAll();
 //
 //	
 	http.authorizeRequests().antMatchers(HttpMethod.POST,"api/sortie/**").hasRole("guide");
@@ -56,8 +58,23 @@ public class Security extends WebSecurityConfigurerAdapter {
 	http.authorizeRequests().antMatchers(HttpMethod.DELETE,"api/participant/**").hasRole("organisateur");
 	http.authorizeRequests().antMatchers(HttpMethod.POST,"api/evaluation/**").hasRole("organisateur");
 	http.authorizeRequests().antMatchers(HttpMethod.DELETE,"api/evaluation/**").hasRole("organisateur");
+	
+	/////////////////////thymeleaf
+	http.authorizeRequests().antMatchers(HttpMethod.POST,"/recommandation/**").hasRole("guide");
+	http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/recommandation/**").hasRole("guide");
+	http.authorizeRequests().antMatchers(HttpMethod.GET,"/recommandation/**").hasRole("guide");
+	http.authorizeRequests().antMatchers(HttpMethod.POST,"/sortie/**").hasRole("organisateur");
+	http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/sortie/**").hasRole("organisateur");
+	http.authorizeRequests().antMatchers(HttpMethod.POST,"/participant/**").hasRole("organisateur");
+	http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/participant/**").hasRole("organisateur");
+	http.authorizeRequests().antMatchers(HttpMethod.GET,"/participant/**").hasRole("organisateur");
+	http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/evaluation/**").hasRole("organisateur");
+	http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/admin/list/**").hasRole("organisateur");
 	http.authorizeRequests().anyRequest().authenticated();
+	
+	
 //	
 	}
+	
 
 }

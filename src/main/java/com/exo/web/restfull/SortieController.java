@@ -4,8 +4,6 @@ package com.exo.web.restfull;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -30,9 +28,12 @@ public class SortieController {
 	public Page<Sortie> read(Pageable pageable){
 		return sortieService.readall(pageable);
 	}
-	@PostMapping
-	public void addSortie(@RequestBody @Valid Sortie sortie) {
-		sortieService.addsortie(sortie);
+
+	@PostMapping("/{nomComplet}")
+	public void addSortie(@PathVariable String nomComplet,@RequestBody Sortie sortie)
+	{
+		
+			sortieService.addAdminToSortie(nomComplet, sortie);
 	}
 	@DeleteMapping("/delete/{id}")
 	public void deletbyid(@PathVariable int id) {
@@ -54,9 +55,6 @@ public class SortieController {
 	public List<Sortie> findbyretour(@PathVariable String retour) {
 		return sortieService.findByRetour(retour);
 	}
-	@GetMapping("/admin/{admin}")
-	public Sortie findbyadmin(@PathVariable String admin) {
-		return sortieService.findByAdmin(admin);
-	}
+	
 
 }

@@ -127,7 +127,8 @@ public class Sortie {
 			@NotBlank(message = "la destination ne doit pas être vide") String destination,
 			@NotBlank(message = "le depart ne doit pas être vide") String depart,
 			@NotBlank(message = "le retour ne doit pas être vide") String retour,
-			@NotNull(message = "le prix ne doit pas être vide") double prix, Admin admin, String description,
+			@NotNull(message = "le prix ne doit pas être vide") double prix, 
+			 Admin admin, String description,
 			List<Participant> participants) {
 		super();
 		this.titre = titre;

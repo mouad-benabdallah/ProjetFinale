@@ -38,8 +38,9 @@
 				</div>  
 				<div class="mb-3">
 				  <label for="exampleFormControlTextarea1" class="form-label">Responsable</label>
-				  <input type="text" class="form-control"   name="admin" th:field="*{admin}" placeholder="responsable" >
-				    <div class="alert alert-danger" th:if="${#fields.hasErrors('admin')}" th:errors="*{admin}"></div>
+				  <select  class="form-control" th:name="nom" >
+					<option th:each="ad : ${admins}" th:value="${ad.nomComplet}" th:text="${ad.nomComplet}" ></option>  
+ 				  </select> 				
 				 </div>   
 				    <div class="mb-3">
 				  <label for="exampleFormControlTextarea1" class="form-label">Prix</label>
@@ -81,7 +82,7 @@
 						<td th:text="${s.destination}"></td>
 						<td th:text="${s.depart}"></td>
 						<td th:text="${s.retour}"></td>
-						<td th:text="${s.admin}"></td>
+						<td th:text="${s.admin.nomComplet}"></td>
 						<td th:text="${s.prix}"></td>
 						<td th:text="${s.description}"></td>
 						<td ><a th:href="@{/sortie/delete/{id}(id=${s.id})}" class="btn btn-danger">supprimer</a></td>

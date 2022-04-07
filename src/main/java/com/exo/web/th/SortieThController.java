@@ -1,5 +1,7 @@
 package com.exo.web.th;
 
+
+
 import java.util.List;
 
 import javax.validation.Valid;
@@ -17,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.exo.entities.Admin;
 import com.exo.entities.Sortie;
-import com.exo.repository.SortieRepository;
+import com.exo.repository.AdminRepository;
+import com.exo.service.AccountService;
 import com.exo.service.SortieService;
 
 @Controller
@@ -27,28 +31,33 @@ public class SortieThController {
 	@Autowired
 	SortieService sortieService;
 	@Autowired
-	SortieRepository sortieRepository;
+	AccountService accountService;
+	@Autowired
+	AdminRepository adminRepository;
 	
 	
 	@GetMapping("")
 	public String sorties(Model m,Pageable pageable) {
 		Page<Sortie> list = sortieService.readall(pageable);
 		Sortie sortie = new Sortie();
+		List<Admin> admins= adminRepository.findAll();
+		m.addAttribute("admins", admins);
 		m.addAttribute("sortie", sortie);
 		m.addAttribute("sorties", list);
+		String nom=""; // initialisation de nomcomplet d'admin
+		m.addAttribute("nom",nom);
 		return "sortie";
 	}
 	@PostMapping("/add")
-	public String addsortie(@Valid Sortie sortie,BindingResult result,@RequestParam(name = "admin", required = false)String admin) {
+	public String addsortie(@Valid Sortie sortie,BindingResult result,@RequestParam String nom) {
 		if(result.hasErrors())
 		{
 			return "sortie";
 		}
 		else
 		{
-//		List<Sortie> ss=sortieRepository.findAll();
-//		int id = ss.size();
-//		sortieService.addAdminToSortie(admin, id);
+		Admin a = accountService.findByNomComplet(nom);
+		sortie.setAdmin(a);
 		sortieService.addsortie(sortie);
 		return "redirect:/sortie";
 		}

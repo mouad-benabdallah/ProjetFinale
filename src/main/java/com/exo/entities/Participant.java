@@ -30,7 +30,7 @@ public class Participant {
 	private String telephone;
 	private int age;
 	
-	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_sortie",referencedColumnName = "id")
 	private Sortie sortie;
 

@@ -1,6 +1,8 @@
 package com.exo.web.th;
 
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.exo.entities.Admin;
 import com.exo.entities.Role;
@@ -33,6 +36,9 @@ public class AdminThController {
 	
 	@GetMapping("")
 	public String admin(Model m ) {
+		
+		List<Admin> admins= adminRepository.findAll();
+		m.addAttribute("admins", admins);
 		Admin ad = new Admin();
 		m.addAttribute("admin", ad);
 		return "addadmin.html";
@@ -56,9 +62,19 @@ public class AdminThController {
 	}
 	@GetMapping("list")
 	public String alladmin(Model m ,Pageable pageable) {
+		List<Role> roles=roleRepository.findAll();
 		Page<Admin> admins= accountService.findAll(pageable);
+		Role rol=new Role(); 
+		m.addAttribute("role",rol);
+		m.addAttribute("roles", roles);
 		m.addAttribute("admins", admins);
 		return "listadmin.html";
+	}
+	@PostMapping("/addrole")
+	public String addrole(Admin admin,@RequestParam String rol,@RequestParam String admins) {
+		accountService.addRoleToAdmin(admins, rol);
+		return "redirect:/admin/list";
+		
 	}
 	
 	@RequestMapping(value = "/delete/{login}",method = {RequestMethod.GET,RequestMethod.DELETE})

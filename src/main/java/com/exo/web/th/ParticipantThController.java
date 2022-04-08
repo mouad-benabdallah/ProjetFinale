@@ -1,5 +1,7 @@
 package com.exo.web.th;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +15,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.exo.entities.Participant;
+import com.exo.entities.Sortie;
+import com.exo.repository.SortieRepository;
 import com.exo.service.ParticipantService;
 
 @Controller
@@ -22,23 +27,28 @@ import com.exo.service.ParticipantService;
 public class ParticipantThController {
 	@Autowired
 	ParticipantService participantService;
+	@Autowired
+	SortieRepository sortieRepository;
 	
 	@GetMapping("")
 	public String participants(Model m,Pageable pageable) {
+		List<Sortie> sorties=sortieRepository.findAll();
 		Page<Participant> list = participantService.findall(pageable);
 		Participant participant = new Participant();
+		m.addAttribute("sorties", sorties);
 		m.addAttribute("participant", participant);
 		m.addAttribute("participants", list);
 		return "participant";
 	}
 	@PostMapping("/add")
-	public String addparticipant(@Valid Participant participant,BindingResult result) {
+	public String addparticipant(@Valid Participant participant,BindingResult result,@RequestParam int titre) {
 		if(result.hasErrors())
 		{
 			return "participant";
 		}
 		else
 		{
+		participantService.addSortieToParticipant(titre, participant);
 		participantService.addparticipent(participant);
 		return "redirect:/participant";
 		}

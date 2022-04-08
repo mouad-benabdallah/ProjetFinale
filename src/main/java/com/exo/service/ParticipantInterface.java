@@ -17,5 +17,6 @@ public interface ParticipantInterface {
 	public List<Participant> findByNomAndPrenom(String nom,String prenom);
 	public List<Participant> findByNomOrPrenom(String nom,String prenom);
 	public Participant findByEmail(String email);
+	public void addSortieToParticipant(int id,Participant participant);
 
 }

@@ -10,12 +10,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.exo.entities.Participant;
+import com.exo.entities.Sortie;
 import com.exo.repository.ParticipantRepository;
 
 @Service
 public class ParticipantService implements ParticipantInterface{
 	@Autowired
 	ParticipantRepository participantRepository;
+	@Autowired
+	SortieService sortieService;
 
 	@Override
 	public Page<Participant> findall(Pageable pageable) {
@@ -58,5 +61,14 @@ public class ParticipantService implements ParticipantInterface{
 		// TODO Auto-generated method stub
 		return participantRepository.findByEmail(email);
 	}
+
+	@Override
+	public void addSortieToParticipant(int id,Participant participant) {
+		// TODO Auto-generated method stub
+		Sortie sortie= sortieService.findById(id);
+		participant.setSortie(sortie);
+		
+	}
+	
 
 }

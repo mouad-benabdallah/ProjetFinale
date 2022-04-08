@@ -18,6 +18,7 @@ public class Admin implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	public static String rolesadmin="";
 	@Id
 	@NotBlank
 	private String login;
@@ -32,8 +33,25 @@ public class Admin implements Serializable {
 	private String telephone;
 	
 	
+	
+	
 	@ManyToMany(fetch = FetchType.EAGER)
 	private Collection<Role> roles = new ArrayList<Role>();
+	
+	
+	public String getRolesadmin() {
+		String admineroles="";
+		for(Role r:roles) {
+			admineroles=admineroles+" "+r.getRoleName();
+		}
+		rolesadmin=admineroles;
+		return rolesadmin;	
+	}
+	
+	public static void setRolesadmin(String rolesadmin) {
+		Admin.rolesadmin = rolesadmin;
+	}
+
 
 	public String getLogin() {
 		return login;

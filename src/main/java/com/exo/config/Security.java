@@ -69,7 +69,8 @@ public class Security extends WebSecurityConfigurerAdapter {
 	http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/participant/**").hasRole("organisateur");
 	http.authorizeRequests().antMatchers(HttpMethod.GET,"/participant/**").hasRole("organisateur");
 	http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/evaluation/**").hasRole("organisateur");
-	http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/admin/list/**").hasRole("organisateur");
+	http.authorizeRequests().antMatchers(HttpMethod.POST,"/admin/addrole/**").hasRole("admin");
+	http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/admin/delete/**").hasRole("admin");
 	http.authorizeRequests().anyRequest().authenticated();
 	
 	
